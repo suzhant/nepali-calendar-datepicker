@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".NepaliDatePicker">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:background="@color/teal_700"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/toggleButtonGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkedButton="@id/mdtp_date_picker_day"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/mdtp_date_picker_year"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:background="@android:color/transparent"
+                android:textSize="24sp"
+                android:button="@null"
+                style="@style/RadioButtonNoRipple"
+                android:textColor="@drawable/date_picker_selector"
+                tools:text="2015" />
+
+            <RadioButton
+                style="@style/RadioButtonNoRipple"
+                android:id="@+id/mdtp_date_picker_day"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:duplicateParentState="true"
+                android:includeFontPadding="false"
+                android:background="@android:color/transparent"
+                android:textSize="30sp"
+                android:button="@null"
+                android:textColor="@drawable/date_picker_selector"
+                tools:text="Fri, May 15"/>
+        </RadioGroup>
+
+        <include
+            android:id="@+id/layout_header_text"
+            layout="@layout/header_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+
+        <ImageView
+            android:id="@+id/btn_date_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:layout_gravity="bottom"
+            android:src="@drawable/baseline_edit_24"
+            app:tint="@color/white" />
+
+        <ImageView
+            android:id="@+id/btn_calendar_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="6dp"
+            android:visibility="gone"
+            android:layout_gravity="bottom"
+            android:src="@drawable/baseline_calendar_today_24"
+            app:tint="@color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        android:paddingHorizontal="10dp"
+        app:layout_constraintTop_toBottomOf="@+id/calender_view">
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/header_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            app:icon="@drawable/baseline_arrow_drop_down_24"
+            app:iconGravity="textEnd"
+            android:textStyle="bold"
+            app:iconTint="@color/black"
+            android:text="Asar 2023"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageButton
+            android:id="@+id/buttonBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:foreground="@drawable/ripple_effect"
+            android:src="@drawable/baseline_keyboard_arrow_left_24" />
+
+        <ImageButton
+            android:id="@+id/buttonFront"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:padding="10dp"
+            android:foreground="@drawable/ripple_effect"
+            android:src="@drawable/baseline_keyboard_arrow_right_24" />
+    </LinearLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:minHeight="270dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_year"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"
+        android:visibility="gone"/>
+
+    <include
+        android:id="@+id/modal_date"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        layout="@layout/modal_date_input" />
+
+    <LinearLayout
+        android:id="@+id/mdtp_done_background"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:orientation="horizontal"
+        android:background="@android:color/transparent"
+        android:gravity="end"
+        android:layout_gravity="center_vertical"
+        android:paddingBottom="8dp">
+
+        <Button
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/mdtp_cancel"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:minHeight="0dp"
+            android:minWidth="64dp"
+            android:padding="6dp"
+            android:layout_gravity="center"
+            android:text="@string/decline" />
+
+        <Button
+            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:id="@+id/mdtp_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:minHeight="0dp"
+            android:padding="6dp"
+            android:minWidth="64dp"
+            android:layout_gravity="center"
+            android:text="@string/accept" />
+    </LinearLayout>
+
+
+
+</LinearLayout>

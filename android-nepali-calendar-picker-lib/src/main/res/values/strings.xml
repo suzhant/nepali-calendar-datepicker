@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name" translatable="false">CalenderApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="accept">भयो</string>
+    <string name="decline">रद्द गर्नुहोस्</string>
+    <string name="input_error_message">गलत मिति</string>
+    <string name="input_hint">मिति</string>
+    <string name="helper_text">०३/१२/२०७९</string>
+    <string name="et_hint">महिना/तिथि/बर्ष</string>
+    <string name="input_date_title">मिति चयन गर्नुहोस्</string>
+</resources>

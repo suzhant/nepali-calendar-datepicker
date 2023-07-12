@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    tools:context=".MainActivity">
+
+    <Button
+        android:id="@+id/btnCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="show calendar"/>
+
+    <TextView
+        android:id="@+id/txtDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:text="hello"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/et_yy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="year"
+            android:inputType="number"
+            android:layout_weight="1"/>
+        <EditText
+            android:id="@+id/et_mm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="month"
+            android:inputType="number"
+            android:layout_weight="1"/>
+        <EditText
+            android:id="@+id/et_dd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="day"
+            android:inputType="number"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <Button
+            android:id="@+id/btn_adToBs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ad to bs"
+            android:layout_marginEnd="10dp"/>
+        <Button
+            android:id="@+id/btn_bsToAd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="bs to ad"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_conversion_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="hello"
+        android:textAlignment="center"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/btnFirstDayOfMonth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get first day of eng month"/>
+    <Button
+        android:id="@+id/btn_day_of_month"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="get days of eng month"/>
+
+</LinearLayout>
