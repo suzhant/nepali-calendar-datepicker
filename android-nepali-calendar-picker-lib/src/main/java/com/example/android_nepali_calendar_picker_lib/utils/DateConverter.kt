@@ -37,6 +37,16 @@ object DateConverter {
         }
     }
 
+    internal fun isSaturday(
+        @IntRange(from = 1970, to = 2090) yy: Int,
+        @IntRange(from = 1, to = 12) mm: Int,
+        @IntRange(from = 1, to = 32) dd: Int
+    ) : Boolean{
+        val startDayOfMonth = NepaliDateData.startWeekDayMonthMap[yy][mm]
+        val calDay = (startDayOfMonth + dd - 1) % 7
+        return calDay == 0
+    }
+
     private fun getEnglishDate(
         @IntRange(from = 1970, to = 2090) nepYY: Int,
         @IntRange(from = 1, to = 12) nepMM: Int,

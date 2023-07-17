@@ -18,6 +18,7 @@ import com.example.android_nepali_calendar_picker_lib.R
 import com.example.android_nepali_calendar_picker_lib.databinding.CalenderCellBinding
 import com.example.android_nepali_calendar_picker_lib.listener.DatePickerController
 import com.example.android_nepali_calendar_picker_lib.model.MyDate
+import com.example.android_nepali_calendar_picker_lib.utils.DateConverter
 import com.example.android_nepali_calendar_picker_lib.utils.TranslationService.translate
 import com.example.android_nepali_calendar_picker_lib.utils.TranslationService.translateDays
 
@@ -53,6 +54,13 @@ internal class MonthAdapter(
 
             if (dateObj.day.isDigitsOnly()){
                 if (dateObj.id !=null){
+                    if (DateConverter.isSaturday(
+                            yy = dateObj.year.toInt(),
+                            mm = dateObj.month.toInt(),
+                            dd = dateObj.day.toInt()
+                        )){
+                        calenderDay.setTextColor(ContextCompat.getColor(context, R.color.imperial_red))
+                    }
                     if (dateObj.id == selectedId){
                         val drawable = ContextCompat.getDrawable(context, R.drawable.round_shape)
                         val convertedDrawable = adjustDrawableColor(drawable!!)
