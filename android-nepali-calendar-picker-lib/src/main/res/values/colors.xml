@@ -17,4 +17,5 @@
     <color name="dim_gray">#696969</color>
     <color name="mdtp_accent_color_focused">#76ffffff</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="imperial_red">#ED2939</color>
 </resources>
