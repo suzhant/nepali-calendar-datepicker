@@ -1,9 +1,15 @@
 package com.example.android_nepali_calendar_picker_lib.utils
 
+import android.content.Context
 import androidx.annotation.IntRange
 import com.example.android_nepali_calendar_picker_lib.model.Model
+import com.example.android_nepali_calendar_picker_lib.model.NepaliEvent
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import org.joda.time.DateTime
 import org.joda.time.Days
+import java.io.IOException
+import java.io.InputStreamReader
 import java.util.Calendar
 
 object DateConverter {
@@ -317,6 +323,29 @@ object DateConverter {
         ) + ", " + getNepaliMonth(
             month
         ) + " " + TranslationService.translate(day.toString())
+    }
+
+    internal fun readJsonFile(context: Context, fileName: String): String? {
+        //note: event available from 2070 to 2080
+        try {
+            val inputStream = context.assets.open(fileName)
+            val reader = InputStreamReader(inputStream)
+            val jsonString = reader.readText()
+            reader.close()
+            inputStream.close()
+
+            return jsonString
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+        return null
+    }
+
+    internal fun parseJson(jsonString: String): MutableList<NepaliEvent> {
+        val gson = Gson()
+        val eventType = object : TypeToken<MutableList<NepaliEvent>>() {}.type
+        return gson.fromJson(jsonString, eventType)
     }
 
 }
