@@ -5,5 +5,6 @@ data class MyDate(
     var year: String,
     var month: String,
     var day : String,
-    var isEnabled : Boolean = true
+    var isEnabled : Boolean = true,
+    val event: EventDay?
 )

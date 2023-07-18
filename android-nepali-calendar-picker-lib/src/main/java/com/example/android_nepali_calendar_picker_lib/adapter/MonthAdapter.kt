@@ -61,6 +61,13 @@ internal class MonthAdapter(
                         )){
                         calenderDay.setTextColor(ContextCompat.getColor(context, R.color.imperial_red))
                     }
+
+                    if (dateObj.event!=null){
+                        if (dateObj.event.isHoliday){
+                            calenderDay.setTextColor(ContextCompat.getColor(context, R.color.imperial_red))
+                        }
+                    }
+
                     if (dateObj.id == selectedId){
                         val drawable = ContextCompat.getDrawable(context, R.drawable.round_shape)
                         val convertedDrawable = adjustDrawableColor(drawable!!)

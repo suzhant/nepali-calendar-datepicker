@@ -28,6 +28,7 @@ import com.example.android_nepali_calendar_picker_lib.model.Model
 import com.example.android_nepali_calendar_picker_lib.model.Month
 import com.example.android_nepali_calendar_picker_lib.model.MyCalendar
 import com.example.android_nepali_calendar_picker_lib.model.MyDate
+import com.example.android_nepali_calendar_picker_lib.model.NepaliEvent
 import com.example.android_nepali_calendar_picker_lib.model.Year
 import com.example.android_nepali_calendar_picker_lib.utils.Constants
 import com.example.android_nepali_calendar_picker_lib.utils.DateConverter
@@ -38,6 +39,8 @@ import com.example.android_nepali_calendar_picker_lib.utils.DateConverter.getMon
 import com.example.android_nepali_calendar_picker_lib.utils.DateConverter.getNepaliDate
 import com.example.android_nepali_calendar_picker_lib.utils.DateConverter.getYearFromTimestamp
 import com.example.android_nepali_calendar_picker_lib.utils.DateConverter.initials
+import com.example.android_nepali_calendar_picker_lib.utils.DateConverter.parseJson
+import com.example.android_nepali_calendar_picker_lib.utils.DateConverter.readJsonFile
 import com.example.android_nepali_calendar_picker_lib.utils.DateValidation.validateDate
 import com.example.android_nepali_calendar_picker_lib.utils.DateValidation.validateDateMask
 import com.example.android_nepali_calendar_picker_lib.utils.KeyBoardUtils.hideKeyboard
@@ -81,6 +84,7 @@ class NepaliDatePicker : DialogFragment(), DateListener, YearListener, DatePicke
     private var inputDay = 0
     private var inputYear = 0
     private lateinit var textWatcher : TextWatcher
+    private var eventList = mutableListOf<NepaliEvent>()
 
     companion object {
         @JvmStatic
@@ -447,6 +451,7 @@ class NepaliDatePicker : DialogFragment(), DateListener, YearListener, DatePicke
     }
 
     private fun initCalendar(): MyCalendar {
+        fetchEvents(currentYear)
         val months = getDaysWithMonth(currentYear)
         return MyCalendar(
             month = months,
@@ -557,13 +562,14 @@ class NepaliDatePicker : DialogFragment(), DateListener, YearListener, DatePicke
                 id = null,
                 year = year.toString(),
                 month = month.toString(),
-                day = day
+                day = day,
+                event = null
             )
             listOfDays.add(date)
         }
         for (i in 1..42){
             if (i<firstDayOfMonth){
-                val date = MyDate(null,year.toString(),month.toString()," ")
+                val date = MyDate(null,year.toString(),month.toString()," ", event = null)
                 listOfDays.add(date)
             }else{
                 val day = i - (firstDayOfMonth-1)
@@ -575,7 +581,10 @@ class NepaliDatePicker : DialogFragment(), DateListener, YearListener, DatePicke
                         year = year.toString(),
                         month = month.toString(),
                         day = day.toString(),
-                        isEnabled = time in startTimeInMillis..endTimeInMillis
+                        isEnabled = time in startTimeInMillis..endTimeInMillis,
+                        event = if (eventList.isNotEmpty()){
+                            eventList[month - 1].days[day - 1]
+                        } else null
                     )
                     listOfDays.add(date)
                 }
@@ -583,6 +592,18 @@ class NepaliDatePicker : DialogFragment(), DateListener, YearListener, DatePicke
             }
         }
         return listOfDays
+    }
+
+    private fun fetchEvents(currentYear: Int){
+        eventList.clear()
+        if (currentYear in 2000..2080){
+            val jsonString = readJsonFile(requireContext(), "years/$currentYear.json")
+            jsonString?.let {
+                val nepaliEventsList = parseJson(it)
+                // Use the nepaliEventsList as per your requirements
+                eventList = nepaliEventsList
+            }
+        }
     }
 
      override fun setThemeColor(hex: String) {
