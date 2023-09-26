@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), DateListener {
             newFragment.show(supportFragmentManager, "Datepickerdialog")
             val maxDate = NepaliDatePicker.todayDateInMillis()
             newFragment.setEnd(maxDate)
-            newFragment.setVibration(true)
+            newFragment.setVibration(false)
 //            newFragment.setMinAge(18)
 //            newFragment.setThemeColor("#FF3700B3")
 //            newFragment.setStart(2070,3,3)

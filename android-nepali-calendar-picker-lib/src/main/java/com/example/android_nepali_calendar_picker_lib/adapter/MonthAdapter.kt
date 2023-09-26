@@ -54,19 +54,19 @@ internal class MonthAdapter(
 
             if (dateObj.day.isDigitsOnly()){
                 if (dateObj.id !=null){
-                    if (DateConverter.isSaturday(
-                            yy = dateObj.year.toInt(),
-                            mm = dateObj.month.toInt(),
-                            dd = dateObj.day.toInt()
-                        )){
-                        calenderDay.setTextColor(ContextCompat.getColor(context, R.color.imperial_red))
-                    }
-
-                    if (dateObj.event!=null){
-                        if (dateObj.event.isHoliday){
-                            calenderDay.setTextColor(ContextCompat.getColor(context, R.color.imperial_red))
-                        }
-                    }
+//                    if (DateConverter.isSaturday(
+//                            yy = dateObj.year.toInt(),
+//                            mm = dateObj.month.toInt(),
+//                            dd = dateObj.day.toInt()
+//                        )){
+//                        calenderDay.setTextColor(ContextCompat.getColor(context, R.color.imperial_red))
+//                    }
+//
+//                    if (dateObj.event!=null){
+//                        if (dateObj.event.isHoliday){
+//                            calenderDay.setTextColor(ContextCompat.getColor(context, R.color.imperial_red))
+//                        }
+//                    }
 
                     if (dateObj.id == selectedId){
                         val drawable = ContextCompat.getDrawable(context, R.drawable.round_shape)
