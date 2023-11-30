@@ -33,13 +33,14 @@ To use Android Nepali Calendar Picker in your Android project, follow these step
 Step 1: Add the JitPack repository to your build file
 
 ```kotlin
-	dependencyResolutionManagement {
-		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-		repositories {
-			mavenCentral()
-			maven { url 'https://jitpack.io' }
-		}
+dependencyResolutionManagement {
+	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+	repositories {
+		mavenCentral()
+		maven { url 'https://jitpack.io' }
 	}
+}
+```
 
 Step 2: Add the dependency
 
