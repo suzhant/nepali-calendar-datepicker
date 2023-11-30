@@ -18,6 +18,7 @@
             android:id="@+id/toggleButtonGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:checkedButton="@id/mdtp_date_picker_day"
             android:orientation="vertical">
 
@@ -57,11 +58,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
-
 
         <ImageView
             android:id="@+id/btn_date_input"
@@ -83,7 +79,7 @@
             app:tint="@color/white" />
     </LinearLayout>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -93,46 +89,49 @@
         app:layout_constraintTop_toBottomOf="@+id/calender_view">
 
         <com.google.android.material.button.MaterialButton
-            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:id="@+id/header_button"
+            style="@style/Widget.MaterialComponents.Button.TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="Asar 2023"
             android:textColor="@color/black"
+            android:textStyle="bold"
             app:icon="@drawable/baseline_arrow_drop_down_24"
             app:iconGravity="textEnd"
-            android:textStyle="bold"
             app:iconTint="@color/black"
-            android:text="Asar 2023"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
 
         <ImageButton
             android:id="@+id/buttonBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:padding="10dp"
             android:foreground="@drawable/ripple_effect"
-            android:src="@drawable/baseline_keyboard_arrow_left_24" />
+            android:padding="10dp"
+            android:src="@drawable/baseline_keyboard_arrow_left_24"
+            app:layout_constraintEnd_toStartOf="@+id/buttonFront"
+            app:layout_constraintTop_toTopOf="@+id/header_button" />
 
         <ImageButton
             android:id="@+id/buttonFront"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:padding="10dp"
             android:foreground="@drawable/ripple_effect"
-            android:src="@drawable/baseline_keyboard_arrow_right_24" />
-    </LinearLayout>
+            android:padding="10dp"
+            android:src="@drawable/baseline_keyboard_arrow_right_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/buttonBack" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:minHeight="270dp" />
+        android:minHeight="290dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_year"

@@ -451,7 +451,7 @@ class NepaliDatePicker : DialogFragment(), DateListener, YearListener, DatePicke
     }
 
     private fun initCalendar(): MyCalendar {
-        fetchEvents(currentYear)
+     //   fetchEvents(currentYear)
         val months = getDaysWithMonth(currentYear)
         return MyCalendar(
             month = months,

@@ -32,13 +32,13 @@ object DateConverter {
     private fun getWeekDay(
         @IntRange(from = 1970, to = 2090) yy: Int,
         @IntRange(from = 1, to = 12) mm: Int,
-        @IntRange(from = 1, to = 32) dd: Int
+        @IntRange(from = 1, to = 32) dd: Int,
     ): Int {
         val startDayOfMonth = NepaliDateData.startWeekDayMonthMap[yy][mm]
         val calDay = (startDayOfMonth + dd - 1) % 7
-        return if(calDay== 0){
+        return if (calDay == 0) {
             7
-        }else{
+        } else {
             calDay
         }
     }
@@ -46,8 +46,8 @@ object DateConverter {
     internal fun isSaturday(
         @IntRange(from = 1970, to = 2090) yy: Int,
         @IntRange(from = 1, to = 12) mm: Int,
-        @IntRange(from = 1, to = 32) dd: Int
-    ) : Boolean{
+        @IntRange(from = 1, to = 32) dd: Int,
+    ): Boolean {
         val startDayOfMonth = NepaliDateData.startWeekDayMonthMap[yy][mm]
         val calDay = (startDayOfMonth + dd - 1) % 7
         return calDay == 0
@@ -56,7 +56,7 @@ object DateConverter {
     private fun getEnglishDate(
         @IntRange(from = 1970, to = 2090) nepYY: Int,
         @IntRange(from = 1, to = 12) nepMM: Int,
-        @IntRange(from = 1, to = 32) nepDD: Int
+        @IntRange(from = 1, to = 32) nepDD: Int,
     ): Model {
         return if (isNepDateInConversionRange(
                 nepYY,
@@ -117,7 +117,7 @@ object DateConverter {
                 totalNepDaysCount--
             }
             tempModel.day = engDD
-            tempModel.year =engYY
+            tempModel.year = engYY
             tempModel.month = (engMM - 1)
             tempModel.dayOfWeek = dayOfWeek
             tempModel
@@ -141,7 +141,7 @@ object DateConverter {
     private fun getNepaliDate(
         @IntRange(from = 1913 - 2033) engYY: Int,
         @IntRange(from = 1, to = 12) engMM: Int,
-        @IntRange(from = 1, to = 31) engDD: Int
+        @IntRange(from = 1, to = 31) engDD: Int,
     ): Model {
         return if (isEngDateInConversionRange(engYY, engMM, engDD)) {
             val startingEngYear = 1913
@@ -205,13 +205,13 @@ object DateConverter {
     }
 
 
-    fun getNepaliMonth(index: Int) : String {
-        return when(index){
-            1 ->  "बैशाख"
-            2 ->  "जेठ"
-            3 ->  "असार"
-            4 ->  "साउन"
-            5 ->  "भदौ"
+    fun getNepaliMonth(index: Int): String {
+        return when (index) {
+            1 -> "बैशाख"
+            2 -> "जेठ"
+            3 -> "असार"
+            4 -> "साउन"
+            5 -> "भदौ"
             6 -> "असोज"
             7 -> "कार्तिक"
             8 -> "मंसिर"
@@ -243,15 +243,15 @@ object DateConverter {
         return calendar.get(Calendar.DAY_OF_WEEK)
     }
 
-     fun convertToTimestamp(year: Int, month: Int, day: Int): Long {
+    fun convertToTimestamp(year: Int, month: Int, day: Int): Long {
         val calendar = Calendar.getInstance()
         calendar.set(Calendar.YEAR, year)
         calendar.set(Calendar.MONTH, month - 1) // Calendar month starts from 0 (January is 0)
         calendar.set(Calendar.DAY_OF_MONTH, day)
-         calendar.set(Calendar.HOUR_OF_DAY, 0)
-         calendar.set(Calendar.MINUTE, 0)
-         calendar.set(Calendar.SECOND, 0)
-         calendar.set(Calendar.MILLISECOND, 0)
+        calendar.set(Calendar.HOUR_OF_DAY, 0)
+        calendar.set(Calendar.MINUTE, 0)
+        calendar.set(Calendar.SECOND, 0)
+        calendar.set(Calendar.MILLISECOND, 0)
         return calendar.timeInMillis
     }
 
@@ -273,12 +273,12 @@ object DateConverter {
         return calendar.get(Calendar.DAY_OF_MONTH)
     }
 
-    fun adToBs(engYear: Int,engMonth: Int,engDay: Int) : Model{
-        return getNepaliDate(engYear,engMonth,engDay)
+    fun adToBs(engYear: Int, engMonth: Int, engDay: Int): Model {
+        return getNepaliDate(engYear, engMonth, engDay)
     }
 
-    fun bsToAd(npYear: Int,npMonth: Int,npDay: Int) : Model{
-        return getEnglishDate(npYear,npMonth,npDay)
+    fun bsToAd(npYear: Int, npMonth: Int, npDay: Int): Model {
+        return getEnglishDate(npYear, npMonth, npDay)
     }
 
     fun getNepFirstDayOfMonth(year: Int, month: Int): Int {
@@ -289,7 +289,7 @@ object DateConverter {
         return NepaliDateData.daysInMonthMap[year][month]
     }
 
-    internal fun initials(month: Int) : String {
+    internal fun initials(month: Int): String {
         return when (month) {
             1 -> "a"
             2 -> "b"
@@ -310,7 +310,7 @@ object DateConverter {
     internal fun getHeaderText(
         year: Int,
         month: Int,
-        day: Int
+        day: Int,
     ): String {
         return TranslationService.translateDays(
             getDayOfWeek(

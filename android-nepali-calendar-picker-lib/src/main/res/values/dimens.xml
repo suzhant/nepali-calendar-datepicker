@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="cell_text_size">12sp</dimen>
+    <dimen name="cell_text_size">13sp</dimen>
     <dimen name="year_cell_text_size">14sp</dimen>
 </resources>
