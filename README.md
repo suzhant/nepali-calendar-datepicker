@@ -30,15 +30,26 @@ The library offers various customization options, including theme customization 
 
 To use Android Nepali Calendar Picker in your Android project, follow these steps:
 
-Step 1: Add the library dependency to your module-level build.gradle file
+Step 1: Add the JitPack repository to your build file
+
+```kotlin
+	dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
+
+Step 2: Add the dependency
 
 ```kotlin
 dependencies {
-    implementation project(path: ':android-nepali-calendar-picker-lib')
+    implementation 'com.github.suzhant:nepali-calendar-datepicker:latest-release'
 }
 ```
 
-Step 2: Sync your project with gradle
+Step 3: Sync your project with gradle
 
 ## Usage/Examples
 
